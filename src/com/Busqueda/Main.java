@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     String [] arreglo;
-    int tamanio, cont;
+    int tamanio;
 
     public Main(int tam) {
         tamanio = tam;
@@ -78,6 +78,7 @@ public class Main {
                         indiceArreglo);
                 return arreglo[indiceArreglo];
             }
+
             indiceArreglo++;
             indiceArreglo %= tamanio;
             contador++;
@@ -109,13 +110,34 @@ public class Main {
         hash.mostrar();
 
         //String buscado = hash.searchKey("33");
-        System.out.print("Busque un elemento: ");
+        /*System.out.print("Busque un elemento: ");
         String buscado = en.next();
 
         hash.searchKey(buscado);
 
         if (buscado == null) {
             System.out.print("El elemento no se encuentra en la tabla");
+        }*/
+
+        var op = true;
+        while (op) {
+            System.out.print("\nDesea buscar un elemento? (S/N): ");
+            String op_search = en.next();
+
+            if (op_search.equals("S") || op_search.equals("s")) {
+                System.out.print("Busque un elemento: ");
+                String buscado = en.next();
+
+                if (buscado == null) {
+                    System.out.print("El elemento no se encuentra en la tabla");
+                }
+
+                hash.searchKey(buscado);
+
+            } else if (op_search.equals("N") || op_search.equals("n")) {
+                op = false;
+                break;
+            }
         }
     }
 }
